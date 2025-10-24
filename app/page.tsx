@@ -5,38 +5,12 @@ import { Search } from "lucide-react";
 import Header from "@/components/share/navbar";
 import ProductGrid from "@/components/products/product-grid";
 import BottomNav from "@/components/share/bottom-nav";
+import products from "@/test/product";
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("Popular");
 
   const categories = ["Popular", "Vegan", "Natural", "Dermatologi"];
-
-  const products = [
-    {
-      id: 1,
-      name: "Prism FaceMist & Serum",
-      price: 20,
-      image: "/pink-face-mist-serum-product.jpg",
-    },
-    {
-      id: 2,
-      name: "Bella Skinhydra Masque",
-      price: 40,
-      image: "/skincare-masque-product.jpg",
-    },
-    {
-      id: 3,
-      name: "Sugar Peach Lip Balm",
-      price: 18,
-      image: "/peach-lip-balm-product.jpg",
-    },
-    {
-      id: 4,
-      name: "Rose Ritual Serum",
-      price: 35,
-      image: "/rose-serum-product.jpg",
-    },
-  ];
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -46,7 +20,7 @@ export default function Home() {
         {/* Search Bar */}
         <div className="px-4 md:px-8 py-4 md:py-6">
           <div className="flex items-center gap-3 bg-secondary rounded-full px-4 py-3 md:py-4">
-            <Search className="w-6 h-6 md:w-5 md:h-5 text-primary flex-shrink-0" />
+            <Search className="w-6 h-6 md:w-5 md:h-5 text-primary shrink-0" />
             <input
               type="text"
               placeholder="Search products"
