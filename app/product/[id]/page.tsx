@@ -1,31 +1,18 @@
 "use client";
 
-import { useState } from "react";
 import { ArrowLeft, ShoppingBag, Heart, Star } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
+import { useProductStore } from "@/lib/product-store";
 
-export default function ProductDetail({ params }: { params: { id: string } }) {
+export default function ProductDetail() {
+  const product = useProductStore((state) => state.product);
   const [isFavorite, setIsFavorite] = useState(false);
 
-
-  const product = {
-    id: params.id,
-    name: "Bella Skinhydra Masque",
-    price: 40,
-    rating: 4.8,
-    image: "/bella-skinhydra-masque-product-detail.jpg",
-    description:
-      "Enrich your skin with the essence of Rose and Chamomile. Gives a soothing effect and calms the skin. Has anti-ageing properties best used as a sleeping masque.",
-    tags: ["Cruelty Free", "Vegan"],
-    benefits: [
-      "Deep hydration",
-      "Anti-aging properties",
-      "Soothing effect",
-      "Calms sensitive skin",
-    ],
-    isBestSeller: true,
-  };
+  if (!product) {
+    return <p className="p-6">Product not found</p>;
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -43,24 +30,24 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
 
       <main className="pb-32 md:pb-8">
         {/* Product Image */}
-        <div className="relative bg-gradient-to-b from-secondary to-background px-4 md:px-8 py-8 md:py-12">
-            <Image
-              src={product.image || "/placeholder.svg"}
-              alt={product.name}
-              className="w-full h-full object-cover"
-              width={1000}
-              height={1000}
-              priority
-            />
-            {product.isBestSeller && (
-              <div className="absolute top-4 right-4 md:top-6 md:right-6 bg-secondary border-2 border-primary rounded-full px-4 py-2 md:px-6 md:py-3">
-                <span className="text-xs md:text-sm font-bold text-primary">
-                  BEST
-                  <br />
-                  SELLER
-                </span>
-              </div>
-            )}
+        <div className="relative bg-secondary from-secondary to-background px-4 md:px-8 py-8 md:py-12">
+          <Image
+            src={product.image || "/placeholder.svg"}
+            alt={product.name}
+            className="w-full h-full object-cover"
+            width={1000}
+            height={1000}
+            priority
+          />
+          {product.isBestSeller && (
+            <div className="absolute top-4 right-4 md:top-6 md:right-6 bg-secondary border-2 border-primary rounded-full px-4 py-2 md:px-6 md:py-3">
+              <span className="text-xs md:text-sm font-bold text-primary">
+                BEST
+                <br />
+                SELLER
+              </span>
+            </div>
+          )}
         </div>
 
         {/* Product Info */}
@@ -85,20 +72,9 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
             </p>
           </div>
 
-          {/* Description */}
-          <div>
-            <p className="text-foreground leading-relaxed text-sm md:text-base">
-              Enrich your skin with the essence of{" "}
-              <span className="font-bold">Rose</span> and{" "}
-              <span className="font-bold">Chamomile</span>. Gives a soothing
-              effect and calms the skin. Has anti-ageing properties best used as
-              a sleeping masque.
-            </p>
-          </div>
-
           {/* Tags */}
           <div className="flex gap-3 flex-wrap">
-            {product.tags.map((tag) => (
+            {product.tags?.map((tag) => (
               <span
                 key={tag}
                 className="px-4 py-2 bg-secondary text-foreground text-sm font-medium rounded-full border border-border"
@@ -107,12 +83,6 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
               </span>
             ))}
           </div>
-
-          {/* Other Benefits */}
-          <button className="flex items-center gap-2 text-foreground font-medium hover:text-primary transition-colors">
-            <span>Other benefits</span>
-            <span className="text-lg">∨</span>
-          </button>
 
           {/* Add to Bag Button */}
           <div className="flex gap-4 pt-4 md:pt-8">

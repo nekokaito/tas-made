@@ -9,7 +9,7 @@ import products from "@/test/product";
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("Popular");
-
+   
   const categories = ["Popular", "Vegan", "Natural", "Dermatologi"];
 
   return (

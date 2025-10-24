@@ -2,19 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-}
-
-interface ProductGridProps {
-  products: Product[];
-}
+import { useProductStore } from "@/lib/product-store";
+import { ProductGridProps } from "@/types/product";
 
 export default function ProductGrid({ products }: ProductGridProps) {
+  const setProduct = useProductStore((state) => state.setProduct);
   return (
     <div className="px-4 md:px-8 py-4 md:py-8">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
@@ -23,8 +15,9 @@ export default function ProductGrid({ products }: ProductGridProps) {
             key={product.id}
             href={`/product/${product.id}`}
             className="group"
+            onClick={() => setProduct(product)}
           >
-            <div className="bg-card rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-transparent rounded-2xl overflow-hidden hover:shadow-md transition-shadow">
               <Image
                 src={product.image || "/placeholder.svg"}
                 alt={product.name}
