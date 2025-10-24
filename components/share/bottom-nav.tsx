@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function BottomNav() {
   return (
-    <nav className="fixed mx-3 bottom-3 left-0 right-0 md:hidden bg-secondary from-secondary to-secondary/50 border-t border-border rounded-4xl">
+    <nav className="fixed mx-3 bottom-3 left-0 right-0 md:hidden bg-[#ddd3eeda] from-secondary to-secondary/50 border-t border-border rounded-4xl">
       <div className="flex items-center justify-around py-4">
         <Link href="/" className="flex flex-col items-center gap-1">
           <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">

@@ -122,3 +122,17 @@
     color: var(--color-foreground);
   }
 }
+
+.bitcount-font {
+  font-family: var(--font-bitcount), system-ui, sans-serif;
+}
+
+.cabin-sketch-font {
+  font-family: var(--font-cabin-sketch), system-ui, sans-serif;
+}
+.geist-font {
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+.geist-mono-font {
+  font-family: var(--font-mono), monospace;
+}
