@@ -7,6 +7,8 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/context/providers";
+import Header from "@/components/share/navbar";
+import BottomNav from "@/components/share/bottom-nav";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,7 +46,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${bitcount.variable} ${cabinSketch.variable} antialiased`}
       >
+        <Header />
         <Providers>{children}</Providers>
+        <BottomNav />
       </body>
     </html>
   );

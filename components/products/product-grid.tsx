@@ -33,7 +33,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
         <div
           className="grid gap-4 md:gap-6 auto-rows-[200px]"
           style={{
-            gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))",
             gridAutoFlow: "dense",
           }}
         >
