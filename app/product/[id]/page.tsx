@@ -1,15 +1,13 @@
 "use client";
 
-import { ArrowLeft, ShoppingBag, Heart, Star } from "lucide-react";
+import { ArrowLeft, ShoppingBag, Star } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 import { useProductStore } from "@/lib/product-store";
 import AddToBagSection from "@/components/products/add-bag-section";
 
 export default function ProductDetail() {
   const product = useProductStore((state) => state.product);
-  const [isFavorite, setIsFavorite] = useState(false);
 
   if (!product) {
     return <p className="p-6">Product not found</p>;
