@@ -7,7 +7,6 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/context/providers";
-import Header from "@/components/share/navbar";
 import BottomNav from "@/components/share/bottom-nav";
 
 const geistSans = Geist({
@@ -41,12 +40,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${bitcount.variable} ${cabinSketch.variable} antialiased`}
       >
-        <Header />
+        
         <Providers>{children}</Providers>
         <BottomNav />
       </body>

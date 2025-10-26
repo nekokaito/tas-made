@@ -5,6 +5,7 @@ export interface Product {
   image: string;
   rating?: number;
   tags?: string[];
+  description?: string;
   isBestSeller?: boolean;
 }
 

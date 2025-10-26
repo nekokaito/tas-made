@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { useProductStore } from "@/lib/product-store";
+import AddToBagSection from "@/components/products/add-bag-section";
 
 export default function ProductDetail() {
   const product = useProductStore((state) => state.product);
@@ -17,24 +18,27 @@ export default function ProductDetail() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="sticky top-0 z-40 bg-background border-b border-border">
+      <header className="sticky bg-secondary top-0 z-40 border-b border-border">
         <div className="flex items-center justify-between px-4 md:px-8 py-4 md:py-6">
-          <Link href="/">
-            <ArrowLeft className="w-6 h-6 text-foreground" />
+          <Link
+            href="/products"
+            className="bg-primary text-primary-foreground rounded-full px-2 py-2"
+          >
+            <ArrowLeft className="w-6 h-6 " />
           </Link>
-          <button>
-            <ShoppingBag className="w-6 h-6 text-foreground" />
+          <button className="bg-primary text-primary-foreground rounded-full px-2 py-2">
+            <ShoppingBag className="w-6 h-6" />
           </button>
         </div>
       </header>
 
-      <main className="pb-32 md:pb-8">
+      <main className="pb-32 md:pb-8 bg-secondary flex flex-col gap-6 md:flex-row md:gap-12">
         {/* Product Image */}
-        <div className="relative bg-secondary from-secondary to-background px-4 md:px-8 py-8 md:py-12">
+        <div className="relative from-secondary to-background px-4 md:px-8 py-8 md:py-12">
           <Image
             src={product.image || "/placeholder.svg"}
             alt={product.name}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover rounded-4xl"
             width={1000}
             height={1000}
             priority
@@ -51,7 +55,7 @@ export default function ProductDetail() {
         </div>
 
         {/* Product Info */}
-        <div className="px-4 md:px-8 py-6 md:py-8 space-y-6 md:space-y-8">
+        <div className=" mx-4 bg-[#ddd3eece] rounded-4xl px-4 md:px-8 py-6 md:py-8 space-y-6 md:space-y-8">
           {/* Title and Rating */}
           <div>
             <h1 className="text-2xl md:text-3xl font-serif text-foreground mb-4">
@@ -71,7 +75,12 @@ export default function ProductDetail() {
               ${product.price}
             </p>
           </div>
-
+          {/* Description */}
+          <div>
+            <p className="text-foreground text-base md:text-lg leading-relaxed">
+              {product.description}
+            </p>
+          </div>
           {/* Tags */}
           <div className="flex gap-3 flex-wrap">
             {product.tags?.map((tag) => (
@@ -83,24 +92,13 @@ export default function ProductDetail() {
               </span>
             ))}
           </div>
-
-          {/* Add to Bag Button */}
-          <div className="flex gap-4 pt-4 md:pt-8">
-            <button
-              onClick={() => setIsFavorite(!isFavorite)}
-              className="w-14 h-14 md:w-16 md:h-16 rounded-full border-2 border-primary flex items-center justify-center hover:bg-secondary transition-colors"
-            >
-              <Heart
-                className={`w-6 h-6 md:w-7 md:h-7 ${
-                  isFavorite ? "fill-primary text-primary" : "text-primary"
-                }`}
-              />
-            </button>
-            <button className="flex-1 bg-primary text-primary-foreground rounded-full py-4 md:py-5 font-semibold text-lg md:text-xl flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
-              <span>Add to bag</span>
-              <ShoppingBag className="w-5 h-5 md:w-6 md:h-6" />
-            </button>
+          <div className="hidden md:block">
+            <AddToBagSection />
           </div>
+        </div>
+        {/* Add to Bag Button */}
+        <div className="block md:hidden">
+          <AddToBagSection />
         </div>
       </main>
     </div>
