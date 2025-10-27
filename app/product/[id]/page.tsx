@@ -22,7 +22,7 @@ export default function ProductDetail() {
             href="/products"
             className="bg-primary text-primary-foreground rounded-full px-2 py-2"
           >
-            <ArrowLeft className="w-6 h-6 " />
+            <ArrowLeft className="w-6 h-6" />
           </Link>
           <button className="bg-primary text-primary-foreground rounded-full px-2 py-2">
             <ShoppingBag className="w-6 h-6" />
