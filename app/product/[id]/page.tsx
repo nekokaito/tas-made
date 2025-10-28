@@ -33,13 +33,13 @@ export default function ProductDetail() {
         </div>
       </header>
 
-      <main className="pb-32 md:pb-8 bg-secondary flex flex-col gap-6 md:flex-row md:gap-12">
+      <main className="pb-32 md:pb-8 bg-secondary flex flex-col gap-6 md:flex-row md:justify-center md:items-center">
         {/* Product Image */}
-        <div className="relative from-secondary to-background px-4 md:px-8 py-8 md:py-12">
+        <div className="relative  from-secondary to-background px-4 md:px-8 py-8 md:py-12">
           <Image
             src={product.image || "/placeholder.svg"}
             alt={product.name}
-            className="w-full h-full object-cover rounded-4xl"
+            className="w-full md:mx-auto md:w-3/4 lg:w-[80%] xl:w-1/2 h-full object-cover rounded-4xl"
             width={1000}
             height={1000}
             priority
@@ -56,7 +56,7 @@ export default function ProductDetail() {
         </div>
 
         {/* Product Info */}
-        <div className=" mx-4 bg-[#ddd3eece] rounded-4xl px-4 md:px-8 py-6 md:py-8 space-y-6 md:space-y-8">
+        <div className="mx-4 md:h-1/2 bg-[#ddd3eece] rounded-4xl px-4 md:px-8 py-6 md:py-8 space-y-6 md:space-y-8">
           <div className="flex items-center justify-between gap-4">
             {/* Title and Rating */}
             <div>
