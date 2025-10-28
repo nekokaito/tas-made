@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, ShoppingBag, Star } from "lucide-react";
+import { ArrowLeft, ShoppingBag, Instagram, Facebook } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useProductStore } from "@/lib/product-store";
@@ -8,6 +8,9 @@ import AddToBagSection from "@/components/products/add-bag-section";
 
 export default function ProductDetail() {
   const product = useProductStore((state) => state.product);
+
+  const facebookUserId = process.env.NEXT_PUBLIC_FACEBOOK_USER_ID;
+  const instagramUserId = process.env.NEXT_PUBLIC_INSTAGRAM_USER_ID;
 
   if (!product) {
     return <p className="p-6">Product not found</p>;
@@ -20,11 +23,11 @@ export default function ProductDetail() {
         <div className="flex items-center justify-between px-4 md:px-8 py-4 md:py-6">
           <Link
             href="/products"
-            className="bg-primary text-primary-foreground rounded-full px-2 py-2"
+            className="bg-primary text-primary-foreground hover:opacity-90 rounded-full px-2 py-2"
           >
             <ArrowLeft className="w-6 h-6" />
           </Link>
-          <button className="bg-primary text-primary-foreground rounded-full px-2 py-2">
+          <button className="bg-primary text-primary-foreground hover:opacity-90 rounded-full px-2 py-2">
             <ShoppingBag className="w-6 h-6" />
           </button>
         </div>
@@ -54,24 +57,38 @@ export default function ProductDetail() {
 
         {/* Product Info */}
         <div className=" mx-4 bg-[#ddd3eece] rounded-4xl px-4 md:px-8 py-6 md:py-8 space-y-6 md:space-y-8">
-          {/* Title and Rating */}
-          <div>
-            <h1 className="text-2xl md:text-3xl font-serif text-foreground mb-4">
-              {product.name}
-            </h1>
-            <div className="flex items-center gap-2">
-              <Star className="w-5 h-5 fill-primary text-primary" />
-              <span className="text-foreground font-medium">
-                {product.rating}
-              </span>
+          <div className="flex items-center justify-between gap-4">
+            {/* Title and Rating */}
+            <div>
+              <h1 className="text-2xl md:text-3xl font-serif text-foreground mb-4">
+                {product.name}
+              </h1>
+              <div className="flex items-center gap-2">
+                <Link
+                  href={`https://www.instagram.com/direct/t/${instagramUserId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-primary text-primary-foreground hover:opacity-90 rounded-full px-2 py-2"
+                >
+                  <Instagram className="w-6 h-6" />
+                </Link>
+                <Link
+                  href={`https://www.messenger.com/t/${facebookUserId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-primary text-primary-foreground hover:opacity-90 rounded-full px-2 py-2"
+                >
+                  <Facebook className="w-6 h-6" />
+                </Link>
+              </div>
             </div>
-          </div>
 
-          {/* Price */}
-          <div>
-            <p className="text-4xl md:text-5xl font-bold text-foreground">
-              ${product.price}
-            </p>
+            {/* Price */}
+            <div>
+              <p className="text-4xl md:text-5xl font-bold text-foreground">
+                ${product.price}
+              </p>
+            </div>
           </div>
           {/* Description */}
           <div>
