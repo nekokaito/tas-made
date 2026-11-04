@@ -33,13 +33,13 @@ export default function Header() {
         {/* Logo */}
         <div className="flex w-auto gap-2 justify-center items-center">
           <Image
-            src="/logo.png"
+            src="/tas-logo.png"
             alt="Tas Made Logo"
             width={40}
             height={30}
             className="object-contain"
           />
-          <h1 className="cabin-sketch-font lg:text-3xl md:text-2xl text-foreground flex-1 text-center md:flex-none">
+          <h1 className="loubag-font lg:text-2xl md:text-xl text-foreground flex-1 text-center md:flex-none">
             Tas Made
           </h1>
         </div>

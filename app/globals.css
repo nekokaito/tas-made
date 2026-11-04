@@ -136,3 +136,6 @@
 .geist-mono-font {
   font-family: var(--font-mono), monospace;
 }
+.loubag-font {
+  font-family: var(--font-loubag), system-ui, sans-serif;
+}
