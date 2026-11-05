@@ -57,9 +57,9 @@ export default function RelatedProducts({ productId }: { productId: number }) {
               key={product.id}
               href={`/product/${product.id}`}
               onClick={() => setProduct(product)}
-              className="group grid min-h-0 min-w-0 grid-rows-[minmax(0,1fr)_auto] overflow-hidden rounded-2xl bg-background/80 shadow-sm transition-shadow hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              className="group relative block h-full min-h-40 min-w-0 overflow-hidden rounded-4xl bg-card shadow-sm transition-shadow hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary md:aspect-[4/5] lg:aspect-auto"
             >
-              <div className="relative min-h-24 w-full overflow-hidden md:aspect-[4/3] lg:aspect-auto">
+              <div className="absolute inset-0 overflow-hidden">
                 <Image
                   src={product.image || "/placeholder.svg"}
                   alt={product.name}
@@ -68,11 +68,11 @@ export default function RelatedProducts({ productId }: { productId: number }) {
                   className="object-cover transition-transform duration-300 motion-safe:group-hover:scale-105"
                 />
               </div>
-              <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1 p-3 backdrop-blur-md">
-                <h3 className="min-w-0 flex-1 basis-20 line-clamp-2 text-xs font-medium text-foreground lg:text-sm">
+              <div className="absolute inset-x-2 bottom-3 flex items-center justify-between gap-2 rounded-4xl bg-[#ddd3eeda] px-3 py-3 backdrop-blur-md xl:inset-x-3">
+                <h3 className="min-w-0 flex-1 line-clamp-2 text-xs font-medium text-foreground">
                   {product.name}
                 </h3>
-                <p className="shrink-0 text-base font-semibold text-primary">
+                <p className="shrink-0 text-lg font-semibold text-accent xl:text-xl">
                   ${product.price}
                 </p>
               </div>
