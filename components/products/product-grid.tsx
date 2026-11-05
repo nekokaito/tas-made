@@ -108,7 +108,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
                   <h3 className="text-xs font-medium text-foreground line-clamp-2">
                     {product.name}
                   </h3>
-                  <p className="text-primary font-semibold text-2xl mt-2">
+                  <p className="text-accent font-semibold text-2xl mt-2">
                     ${product.price}
                   </p>
                 </motion.div>

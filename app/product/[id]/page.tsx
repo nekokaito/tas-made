@@ -24,11 +24,11 @@ export default function ProductDetail() {
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 md:px-8 md:py-6">
           <Link
             href="/products"
-            className="bg-primary text-primary-foreground hover:opacity-90 rounded-full px-2 py-2"
+            className="bg-accent text-primary-foreground hover:opacity-90 rounded-full px-2 py-2"
           >
             <ArrowLeft className="w-6 h-6" />
           </Link>
-          <button className="bg-primary text-primary-foreground hover:opacity-90 rounded-full px-2 py-2">
+          <button className="bg-accent text-primary-foreground hover:opacity-90 rounded-full px-2 py-2">
             <ShoppingBag className="w-6 h-6" />
           </button>
         </div>
@@ -71,7 +71,7 @@ export default function ProductDetail() {
                     href={`https://www.instagram.com/direct/t/${instagramUserId}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-primary text-primary-foreground hover:opacity-90 rounded-full px-2 py-2"
+                    className="bg-accent text-primary-foreground hover:opacity-90 rounded-full px-2 py-2"
                   >
                     <Instagram className="w-6 h-6" />
                   </Link>
@@ -79,7 +79,7 @@ export default function ProductDetail() {
                     href={`https://www.messenger.com/t/${facebookUserId}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-primary text-primary-foreground hover:opacity-90 rounded-full px-2 py-2"
+                    className="bg-accent text-primary-foreground hover:opacity-90 rounded-full px-2 py-2"
                   >
                     <Facebook className="w-6 h-6" />
                   </Link>

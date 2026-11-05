@@ -23,7 +23,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-[#c09bfcbb]">
+    <header className="bg-primary">
       <div className="flex items-center justify-between px-4 md:px-8 py-4 md:py-6">
         {/* Menu Icon - Mobile Only */}
         <button className="md:hidden">
@@ -55,7 +55,7 @@ export default function Header() {
                 {active && (
                   <motion.div
                     layoutId="navHighlight"
-                    className="absolute inset-0 rounded-full bg-primary"
+                    className="absolute inset-0 rounded-full bg-accent"
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                   />
                 )}

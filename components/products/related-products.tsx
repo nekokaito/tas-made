@@ -15,8 +15,9 @@ export default function RelatedProducts({ productId }: { productId: number }) {
 
   if (count === 0) return null;
 
-  const visibleProducts = Array.from({ length: Math.min(2, count) }, (_, index) =>
-    otherProducts[(startIndex + index) % count],
+  const visibleProducts = Array.from(
+    { length: Math.min(2, count) },
+    (_, index) => otherProducts[(startIndex + index) % count],
   );
   const canBrowse = count > 2;
   const browse = (direction: number) => {
@@ -37,7 +38,9 @@ export default function RelatedProducts({ productId }: { productId: number }) {
         }
       }}
     >
-      <h2 className="px-1 font-serif text-xl text-foreground">You may also like</h2>
+      <h2 className="px-1 font-serif text-xl text-foreground">
+        You may also like
+      </h2>
       <div className="grid min-h-0 grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] items-center gap-2 lg:gap-3">
         <button
           type="button"

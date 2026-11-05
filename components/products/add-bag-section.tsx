@@ -14,12 +14,12 @@ export default function AddToBagSection() {
       >
         <Heart
           className={`w-6 h-6 md:w-7 md:h-7 ${
-            isWishList ? "fill-primary text-primary" : "text-primary"
+            isWishList ? "fill-accent text-accent" : "text-accent"
           }`}
         />
       </button>
 
-      <button className="flex-1 bg-primary text-primary-foreground rounded-full py-4 md:py-5 font-semibold text-lg md:text-xl flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+      <button className="flex-1 bg-accent text-primary-foreground rounded-full py-4 md:py-5 font-semibold text-lg md:text-xl flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
         <span>Add to bag</span>
         <ShoppingBag className="w-5 h-5 md:w-6 md:h-6" />
       </button>
