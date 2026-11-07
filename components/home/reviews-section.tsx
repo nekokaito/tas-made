@@ -120,7 +120,7 @@ export default function ReviewsSection() {
                 ref={(element) => {
                   cards.current[index] = element;
                 }}
-                className={styles.card}
+                className={styles.card} data-cursor="drag"
                 data-active={offset === 0}
                 aria-hidden={offset !== 0}
                 role="group"

@@ -139,3 +139,52 @@
 .loubag-font {
   font-family: var(--font-loubag), system-ui, sans-serif;
 }
+
+/* Render the 32px cursor assets at their native resolution. */
+#sakura-pixel-cursor {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html.sakura-cursor-active,
+  html.sakura-cursor-active * {
+    cursor: none !important;
+  }
+
+  #sakura-pixel-cursor {
+    display: block;
+    position: fixed;
+    inset: 0 auto auto 0;
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+    user-select: none;
+    z-index: 2147483647;
+    background: url("/cursors/sakura/sakura-animated.gif") center / 32px 32px no-repeat;
+    image-rendering: pixelated;
+    visibility: hidden;
+    /* Follow the pointer directly without easing or trailing. */
+    transition: none;
+    will-change: transform;
+  }
+
+  #sakura-pixel-cursor[data-state="hover"] {
+    background-image: url("/cursors/sakura/sakura-hover-animated.gif");
+  }
+
+  #sakura-pixel-cursor[data-state="drag"] {
+    background-image: url("/cursors/sakura/sakura-drag-animated.gif");
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #sakura-pixel-cursor {
+      background-image: url("/cursors/sakura/sakura-static.png");
+    }
+    #sakura-pixel-cursor[data-state="hover"] {
+      background-image: url("/cursors/sakura/sakura-hover-static.png");
+    }
+    #sakura-pixel-cursor[data-state="drag"] {
+      background-image: url("/cursors/sakura/sakura-drag-static.png");
+    }
+  }
+}

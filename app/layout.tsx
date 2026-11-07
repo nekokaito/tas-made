@@ -10,6 +10,7 @@ import localFont from "next/font/local";
 import { Providers } from "@/context/providers";
 import BottomNav from "@/components/share/bottom-nav";
 import MusicToggle from "@/components/share/music-toggle";
+import SakuraCursor from "@/components/share/sakura-cursor";
 
 const loubag = localFont({
   src: [
@@ -66,6 +67,7 @@ export default function RootLayout({
         <Providers>{children}</Providers>
         <BottomNav />
         <MusicToggle />
+        <SakuraCursor />
       </body>
     </html>
   );
