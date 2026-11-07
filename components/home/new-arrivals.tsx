@@ -1,4 +1,4 @@
-﻿import ProductGrid from "@/components/products/product-grid";
+import ProductGrid from "@/components/products/product-grid";
 import products from "@/test/product";
 import styles from "./home.module.css";
 
@@ -13,8 +13,7 @@ export default function NewArrivals() {
     >
       <div className={styles.sectionHeading}>
         <div>
-          <p className={styles.eyebrow}>FRESH OFF THE HOOK</p>
-          <h2 id="arrivals-title">New arrivals</h2>
+          <h2 id="arrivals-title" className="loubag-font">New arrivals</h2>
         </div>
       </div>
       <div className="-mx-4 md:-mx-8">
