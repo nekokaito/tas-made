@@ -9,6 +9,7 @@ import {
 import localFont from "next/font/local";
 import { Providers } from "@/context/providers";
 import BottomNav from "@/components/share/bottom-nav";
+import MusicToggle from "@/components/share/music-toggle";
 
 const loubag = localFont({
   src: [
@@ -64,6 +65,7 @@ export default function RootLayout({
       >
         <Providers>{children}</Providers>
         <BottomNav />
+        <MusicToggle />
       </body>
     </html>
   );

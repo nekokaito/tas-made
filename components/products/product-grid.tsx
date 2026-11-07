@@ -29,23 +29,20 @@ export default function ProductGrid({ products }: ProductGridProps) {
                   src={product.image || "/placeholder.svg"}
                   alt={product.name}
                   fill
-                  sizes="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw"
+                  sizes="(max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 25vw"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <motion.div
-                className="flex min-w-0 flex-col items-start gap-1 m-2 bg-[#ddd3eeda] rounded-xl p-2.5 sm:m-3 sm:p-3 md:absolute md:inset-x-3 md:bottom-3 md:m-0 md:flex-row md:items-center md:justify-between md:gap-2 md:rounded-4xl md:p-4 xl:inset-x-9"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                transition={{ type: "spring", stiffness: 400, damping: 8 }}
+              <div
+                className="flex min-w-0 flex-col items-start gap-1 m-2 bg-[#ddd3eeda] rounded-xl p-2.5 sm:m-3 sm:p-3 md:absolute md:inset-x-3 md:bottom-3 md:m-0 md:flex-row md:items-center md:justify-between md:gap-2 md:rounded-4xl md:p-3"
               >
-                <h3 className="min-w-0 text-xs sm:text-sm font-medium text-foreground line-clamp-2 wrap-anywhere">
+                <h3 className="min-w-0 flex-1 text-xs sm:text-sm font-medium text-foreground line-clamp-2 wrap-anywhere">
                   {product.name}
                 </h3>
-                <p className="max-w-full text-accent font-semibold text-base sm:text-lg md:text-xl xl:text-2xl wrap-anywhere">
+                <p className="shrink-0 whitespace-nowrap text-accent font-semibold text-base sm:text-lg md:text-xl">
                   ${product.price}
                 </p>
-              </motion.div>
+              </div>
             </motion.div>
           </Link>
         ))}

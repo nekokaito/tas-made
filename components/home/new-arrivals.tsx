@@ -1,0 +1,25 @@
+﻿import ProductGrid from "@/components/products/product-grid";
+import products from "@/test/product";
+import styles from "./home.module.css";
+
+export default function NewArrivals() {
+  // Demo products have no creation date; the last entries are the newest.
+  const latestProducts = products.slice(-4).reverse();
+
+  return (
+    <section
+      className={`${styles.section} ${styles.arrivals}`}
+      aria-labelledby="arrivals-title"
+    >
+      <div className={styles.sectionHeading}>
+        <div>
+          <p className={styles.eyebrow}>FRESH OFF THE HOOK</p>
+          <h2 id="arrivals-title">New arrivals</h2>
+        </div>
+      </div>
+      <div className="-mx-4 md:-mx-8">
+        <ProductGrid products={latestProducts} />
+      </div>
+    </section>
+  );
+}
