@@ -1,9 +1,9 @@
 ﻿.section {
   position: relative;
   isolation: isolate;
-  max-width: 1160px;
+  max-width: 1460px;
   width: calc(100% - 80px);
-  margin: 64px auto 0;
+  margin: 4px auto 0;
   padding: 24px 32px 20px;
 
   border-radius: 28px;
@@ -133,7 +133,7 @@
   filter: drop-shadow(0 20px 12px #33472b35);
 }
 .portrait:focus-visible {
-  outline: 2px dashed #45654c;
+  outline: 2px dashed #f9e8ed;
   outline-offset: 5px;
 }
 .hello {
@@ -167,7 +167,7 @@
 .number {
   font-size: 8px;
   letter-spacing: 1.4px;
-  color: #64715c;
+  color: #d8c4d0;
 }
 .nameplate h3 {
   font:
@@ -222,24 +222,22 @@
   margin-bottom: 14px;
 }
 .copy h2 {
-  font-family: var(--font-loubag), Georgia, serif;
   font-size: clamp(30px, 3.8vw, 46px);
   font-weight: 400;
   line-height: 1.18;
   letter-spacing: -1.8px;
 }
 .copy h2 em {
-  font-family: Georgia, serif;
   font-weight: 400;
   font-size: 0.88em;
   letter-spacing: -1.5px;
-  color: #738067;
+  color: #e7a0c0;
 }
 .intro {
   font-size: 12px;
   line-height: 1.9;
   margin: 20px 0;
-  color: #5e6d56;
+  color: #71344f;
 }
 .greeting {
   display: grid;
@@ -269,16 +267,16 @@
   margin: 24px auto 0;
   padding: 13px 19px;
   border-radius: 30px;
-  background: #354e41;
+  background: #71344f;
   color: #fffdf5;
   font-size: 11px;
   transition: background 200ms;
 }
 .shopLink:hover {
-  background: #526b4e;
+  background: #bd7f9b;
 }
 .shopLink:focus-visible {
-  outline: 3px solid #354e41;
+  outline: 3px solid #bd7f9b;
   outline-offset: 4px;
 }
 .hint {

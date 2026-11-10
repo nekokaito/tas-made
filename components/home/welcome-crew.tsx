@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FaRegHandSpock } from "react-icons/fa6";
 import styles from "./welcome-crew.module.css";
 
 const crew = [
@@ -184,20 +184,31 @@ export default function WelcomeCrew() {
                   />
                 </span>
                 <span className={styles.hello}>
-                  {active === index ? "Hello, friend! ♡" : "Say hello ↗"}
+                  {active === index ? (
+                    "Hello, friend! ♡"
+                  ) : (
+                    <span
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "6px",
+                      }}
+                    >
+                      Say hello <FaRegHandSpock />
+                    </span>
+                  )}
                 </span>
               </button>
             </div>
             <div data-label className={styles.nameplate}>
-              <h3>
+              <h3 className="loubag-font">
                 {character.name} <span lang="ja">{character.japanese}</span>
               </h3>
-              <p>{character.role}</p>
-              <span className={styles.characterNote}>{character.note}</span>
+              <p className="loubag-font">{character.role}</p>
             </div>
           </div>
         ))}
-        <div data-copy className={styles.copy}>
+        <div data-copy className={`${styles.copy} loubag-font`}>
           <h2 id="crew-title">
             Welcome
             <br />
@@ -223,12 +234,6 @@ export default function WelcomeCrew() {
               </p>
             </div>
           </div>
-          <Link className={styles.shopLink} href="/products">
-            Find your little companion <span aria-hidden="true">↗</span>
-          </Link>
-          <span className={styles.hint}>
-            Psst… tap a character. They say hello.
-          </span>
         </div>
       </div>
     </section>

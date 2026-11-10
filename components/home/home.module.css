@@ -9,7 +9,7 @@
 }
 .hero {
   width: calc(100% - 80px);
-  max-width: 1160px;
+  max-width: 960px;
   margin: 28px auto 0;
   border-radius: 28px;
   overflow: hidden;
@@ -106,7 +106,7 @@
   outline-offset: 5px;
 }
 .section {
-  max-width: 1240px;
+  max-width: 1440px;
   margin: auto;
   padding: 76px 40px 0;
   scroll-margin-top: 28px;

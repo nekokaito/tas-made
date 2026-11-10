@@ -26,8 +26,9 @@ const collections = [
 export default function Home() {
   return (
     <main className={styles.home}>
-      <StorefrontHero />
       <WelcomeCrew />
+      <StorefrontHero />
+
       <ReelVideo
         src="/videos/crochet-reel.mp4"
         poster="/videos/crochet-reel-poster.jpg"
