@@ -1,3 +1,4 @@
+import WelcomeCrew from "@/components/home/welcome-crew";
 import StorefrontHero from "@/components/home/storefront-hero";
 import ReelVideo from "@/components/home/reel-video";
 import ReviewsSection from "@/components/home/reviews-section";
@@ -26,6 +27,7 @@ export default function Home() {
   return (
     <main className={styles.home}>
       <StorefrontHero />
+      <WelcomeCrew />
       <ReelVideo
         src="/videos/crochet-reel.mp4"
         poster="/videos/crochet-reel-poster.jpg"
