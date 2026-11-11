@@ -1,15 +1,14 @@
 .section {
-  max-width: 1160px;
+  max-width: auto;
   margin: 76px auto 0;
   padding: 48px 24px 36px;
-  border-radius: 30px;
+
   background: radial-gradient(
     ellipse at 50% 45%,
     #ead9ed 0%,
     #f5edf7 52%,
     #faf5fb 100%
   );
-  border: 1px solid #ecdfeb;
 }
 .heading {
   text-align: center;

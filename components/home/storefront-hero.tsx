@@ -185,15 +185,6 @@ export default function StorefrontHero() {
           ))}
         </div>
       </div>
-      <div className={styles.heroBar}>
-        <p>Handmade with love.</p>
-        <Link href="/products" className={styles.button}>
-          Explore the shop <span aria-hidden="true">↗</span>
-        </Link>
-        <a href="#collections" className={styles.textLink}>
-          Collections <span aria-hidden="true">↓</span>
-        </a>
-      </div>
     </section>
   );
 }

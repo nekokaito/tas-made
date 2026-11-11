@@ -1,0 +1,299 @@
+.outer {
+  width: 100%;
+  color: #582b48;
+  background: #fcf8fc;
+}
+
+.topWave {
+  display: block;
+  width: 100%;
+  height: clamp(44px, 5vw, 68px);
+  color: #f3e3f3;
+}
+
+.panel {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  background: linear-gradient(180deg, #f3e3f3, #ead6eb);
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(230px, 1fr) minmax(0, 1.45fr);
+  gap: clamp(25px, 5vw, 76px);
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 26px 40px 74px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  max-width: 100%;
+  text-align: center;
+}
+
+.bow {
+  width: 78px;
+  height: 31px;
+  margin-bottom: 1px;
+  color: #853766;
+}
+
+.brandName {
+  font-size: clamp(30px, 3.3vw, 42px);
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  line-height: 1.05;
+  white-space: nowrap;
+}
+
+.brand p {
+  margin-top: 9px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.31em;
+  white-space: nowrap;
+}
+
+.brand p span {
+  font-size: 15px;
+  letter-spacing: 0;
+  vertical-align: -1px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(18px, 3vw, 42px);
+}
+
+.navigation a {
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.navigation a:hover {
+  color: #a0477c;
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.socials > a:not(.developer) {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #b98fac;
+  border-radius: 50%;
+  background: #fff8fc99;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.socials > a:not(.developer):hover {
+  background: #fff8fc;
+  transform: translateY(-2px);
+}
+.developer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  margin: 3px;
+  margin-left: 2px;
+  padding: 4px;
+  padding-left: 10px;
+  border: 1px solid #c99caf;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  background: #fff8fc99;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.developer:hover {
+  color: #a0477c;
+  background: #fff8fc;
+  transform: translateY(-2px);
+}
+.developerLogo {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+}
+.developerLogo img {
+  display: block;
+  width: 29px;
+  height: auto;
+}
+.outer a:focus-visible {
+  outline: 2px solid #853766;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.pinkBloom,
+.flowerCluster,
+.lavenderStems {
+  position: absolute;
+  z-index: 1;
+  height: auto;
+  pointer-events: none;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 6px #6b355023);
+}
+.pinkBloom {
+  bottom: -28px;
+  left: clamp(12px, 3vw, 46px);
+  width: clamp(115px, 11vw, 155px);
+  transform: rotate(-12deg);
+}
+.flowerCluster {
+  top: -26px;
+  right: clamp(18px, 5vw, 80px);
+  width: 96px;
+  transform: rotate(12deg);
+  opacity: 0.86;
+}
+.lavenderStems {
+  right: clamp(10px, 2vw, 32px);
+  bottom: -24px;
+  width: clamp(114px, 10vw, 140px);
+  transform: rotate(12deg);
+}
+.credit {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  padding: 0 20px 17px;
+  text-align: center;
+  color: #84667d;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 800px) {
+  .content {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 26px;
+    padding: 25px 24px 82px;
+  }
+  .right {
+    align-items: center;
+    gap: 20px;
+  }
+  .navigation {
+    justify-content: center;
+  }
+  .pinkBloom {
+    width: 100px;
+  }
+  .flowerCluster {
+    width: 80px;
+  }
+  .lavenderStems {
+    width: 100px;
+  }
+}
+
+@media (max-width: 560px) {
+  .topWave {
+    height: 43px;
+  }
+  .panel {
+    padding-bottom: calc(100px + env(safe-area-inset-bottom));
+  }
+  .content {
+    gap: 25px;
+    padding: 16px 18px 82px;
+  }
+  .brandName {
+    font-size: 35px;
+  }
+  .brand p {
+    font-size: 8px;
+  }
+  .navigation {
+    gap: 12px 23px;
+  }
+  .navigation a {
+    font-size: 12px;
+  }
+  .socials {
+    justify-content: center;
+  }
+  .developer {
+    font-size: 11px;
+  }
+  .developerLogo {
+    width: 36px;
+    height: 36px;
+  }
+  .developerLogo img {
+    width: 26px;
+  }
+  .pinkBloom {
+    left: 6px;
+    bottom: calc(132px + env(safe-area-inset-bottom));
+    width: 70px;
+  }
+  .flowerCluster {
+    top: -16px;
+    right: 8px;
+    width: 58px;
+  }
+  .lavenderStems {
+    right: 4px;
+    bottom: calc(132px + env(safe-area-inset-bottom));
+    width: 72px;
+  }
+  .credit {
+    font-size: 9px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 360px) {
+  .content {
+    padding-inline: 15px;
+  }
+  .navigation {
+    gap: 12px 18px;
+  }
+  .navigation a {
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navigation a,
+  .socials a {
+    transition: none;
+  }
+}

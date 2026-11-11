@@ -11,6 +11,7 @@ import { Providers } from "@/context/providers";
 import BottomNav from "@/components/share/bottom-nav";
 import MusicToggle from "@/components/share/music-toggle";
 import SakuraCursor from "@/components/share/sakura-cursor";
+import SiteFooter from "@/components/share/site-footer";
 
 const loubag = localFont({
   src: [
@@ -65,6 +66,7 @@ export default function RootLayout({
         className={`${loubag.variable} ${geistSans.variable} ${geistMono.variable} ${bitcount.variable} ${cabinSketch.variable} antialiased`}
       >
         <Providers>{children}</Providers>
+        <SiteFooter />
         <BottomNav />
         <MusicToggle />
         <SakuraCursor />

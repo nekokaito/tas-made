@@ -120,7 +120,8 @@ export default function ReviewsSection() {
                 ref={(element) => {
                   cards.current[index] = element;
                 }}
-                className={styles.card} data-cursor="drag"
+                className={styles.card}
+                data-cursor="drag"
                 data-active={offset === 0}
                 aria-hidden={offset !== 0}
                 role="group"
@@ -150,13 +151,7 @@ export default function ReviewsSection() {
           >
             <ArrowLeft size={19} />
           </button>
-          <span
-            className={styles.counter}
-            aria-live="polite"
-            aria-atomic="true"
-          >
-            {String(active + 1).padStart(2, "0")} <span>/ {count}</span>
-          </span>
+
           <button
             type="button"
             onClick={() => move(1)}
