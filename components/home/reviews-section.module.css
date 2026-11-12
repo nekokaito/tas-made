@@ -38,7 +38,7 @@
 }
 .card {
   position: absolute;
-  width: 320px;
+  width: 310px;
   height: 400px;
   left: calc(50% - 160px);
   top: 12px;

@@ -35,9 +35,6 @@ function Bow() {
 }
 
 export default function HomeFooter() {
-  const facebookUserId = process.env.NEXT_PUBLIC_FACEBOOK_USER_ID;
-  const instagramUserId = process.env.NEXT_PUBLIC_INSTAGRAM_USER_ID;
-
   return (
     <footer className={styles.outer}>
       <svg

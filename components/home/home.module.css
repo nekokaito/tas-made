@@ -12,10 +12,10 @@
   grid-template-columns: minmax(0, 960px) minmax(280px, 1fr);
   align-items: center;
   gap: clamp(24px, 3vw, 56px);
-  padding-top: 54px;
+  padding-top: 94px;
   width: calc(100% - 80px);
   max-width: 1370px;
-  margin: 48px auto 0;
+  margin: 98px auto 0;
 }
 .storefrontSection .hero {
   width: 100%;

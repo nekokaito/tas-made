@@ -214,7 +214,7 @@ export default function WelcomeCrew() {
             <br />
             <em>to our world.</em>
           </h2>
-          <p className={styles.intro}>A little yarn. A little anime.</p>
+          <p className={styles.intro}>A little yarn. A little cozy.</p>
           <div
             id="crew-greeting"
             className={styles.greeting}
