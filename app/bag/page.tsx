@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Minus, Plus, ShoppingBag, Trash2 } from "lucide-react";
-import { useCartStore } from "@/lib/cart-store";
+import { selectCartItemCount, selectCartSubtotal, useCartStore } from "@/lib/cart-store";
 import styles from "./bag.module.css";
 
 const formatPrice = (amount: number) =>
@@ -13,11 +13,8 @@ export default function BagPage() {
   const items = useCartStore((state) => state.items);
   const changeQuantity = useCartStore((state) => state.changeQuantity);
   const removeItem = useCartStore((state) => state.removeItem);
-  const itemCount = items.reduce((count, item) => count + item.quantity, 0);
-  const subtotal = items.reduce(
-    (total, item) => total + item.product.price * item.quantity,
-    0,
-  );
+  const itemCount = useCartStore(selectCartItemCount);
+  const subtotal = useCartStore(selectCartSubtotal);
 
   return (
     <main className={styles.page}>
@@ -31,7 +28,7 @@ export default function BagPage() {
             <h1>Your bag<span className={styles.period}>.</span></h1>
             <p>Handpicked with love, just for you.</p>
           </div>
-          <span className={styles.count} aria-label={`${itemCount} items in bag`}>
+          <span className={styles.count} aria-label={`${itemCount} ${itemCount === 1 ? "item" : "items"} in bag`}>
             {itemCount}
           </span>
         </div>

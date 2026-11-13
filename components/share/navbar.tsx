@@ -13,9 +13,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import { selectCartItemCount, useCartStore } from "@/lib/cart-store";
+import { selectWishlistCount, useWishlistStore } from "@/lib/wishlist-store";
 
 export default function Header() {
   const pathname = usePathname();
+  const itemCount = useCartStore(selectCartItemCount);
+  const favoriteCount = useWishlistStore(selectWishlistCount);
 
   const navItems = [
     { href: "/", icon: Home },
@@ -81,16 +85,20 @@ export default function Header() {
 
           <Link
             href="/bag"
-            className="flex-col items-center gap-1 hidden md:flex"
+            aria-label={`View bag, ${itemCount} ${itemCount === 1 ? "item" : "items"}`}
+            className="relative flex-col items-center gap-1 hidden md:flex"
           >
             <ShoppingBag className="w-6 h-6 text-foreground" />
+            {itemCount > 0 && <span aria-hidden="true" className="absolute -right-3 -top-3 flex min-w-5 h-5 items-center justify-center rounded-full bg-accent px-1 text-xs font-bold text-primary-foreground">{itemCount}</span>}
           </Link>
 
           <Link
             href="/wishlist"
-            className="flex-col items-center gap-1 hidden md:flex"
+            aria-label={`View favorites, ${favoriteCount} ${favoriteCount === 1 ? "item" : "items"}`}
+            className="relative flex-col items-center gap-1 hidden md:flex"
           >
             <Heart className="w-6 h-6 text-foreground" />
+            {favoriteCount > 0 && <span aria-hidden="true" className="absolute -right-3 -top-3 flex min-w-5 h-5 items-center justify-center rounded-full bg-accent px-1 text-xs font-bold text-primary-foreground">{favoriteCount}</span>}
           </Link>
           <Link
             href="/profile"

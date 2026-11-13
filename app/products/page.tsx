@@ -8,8 +8,15 @@ import products from "@/test/product";
 
 export default function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState("Popular");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const categories = ["Popular", "Vegan", "Natural", "Dermatologi"];
+  const query = searchQuery.trim().toLowerCase();
+  const filteredProducts = products.filter(
+    (product) =>
+      product.name.toLowerCase().includes(query) ||
+      product.description?.toLowerCase().includes(query),
+  );
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -19,8 +26,11 @@ export default function ProductsPage() {
           <div className="flex items-center gap-3 bg-secondary rounded-full px-4 py-3 md:py-4">
             <Search className="w-6 h-6 md:w-5 md:h-5 text-primary shrink-0" />
             <input
-              type="text"
+              type="search"
+              aria-label="Search products"
               placeholder="Search products"
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
               className="flex-1 bg-transparent outline-none text-foreground placeholder:text-muted-foreground text-sm md:text-base"
             />
           </div>
@@ -45,7 +55,16 @@ export default function ProductsPage() {
           </div>
         </div>
 
-        <ProductGrid products={products} />
+        {filteredProducts.length > 0 ? (
+          <ProductGrid products={filteredProducts} />
+        ) : (
+          <p
+            className="px-4 py-8 text-center text-muted-foreground md:px-8"
+            role="status"
+          >
+            No products found for &quot;{searchQuery.trim()}&quot;.
+          </p>
+        )}
       </main>
     </div>
   );

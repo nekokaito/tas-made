@@ -1,14 +1,21 @@
 "use client";
 
-import { ArrowLeft, ShoppingBag, Instagram, Facebook } from "lucide-react";
+import { ArrowLeft, ShoppingBag, Heart, Instagram, Facebook } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { useProductStore } from "@/lib/product-store";
+import { useParams } from "next/navigation";
+import { selectCartItemCount, useCartStore } from "@/lib/cart-store";
+import { selectWishlistCount, useWishlistStore } from "@/lib/wishlist-store";
 import AddToBagSection from "@/components/products/add-bag-section";
 import RelatedProducts from "@/components/products/related-products";
+import products from "@/test/product";
+import type { Product } from "@/types/product";
 
 export default function ProductDetail() {
-  const product = useProductStore((state) => state.product);
+  const { id } = useParams<{ id: string }>();
+  const product: Product | undefined = products.find((item) => item.id === Number(id));
+  const itemCount = useCartStore(selectCartItemCount);
+  const favoriteCount = useWishlistStore(selectWishlistCount);
 
   const facebookUserId = process.env.NEXT_PUBLIC_FACEBOOK_USER_ID;
   const instagramUserId = process.env.NEXT_PUBLIC_INSTAGRAM_USER_ID;
@@ -28,9 +35,26 @@ export default function ProductDetail() {
           >
             <ArrowLeft className="w-6 h-6" />
           </Link>
-          <button className="bg-accent text-primary-foreground hover:opacity-90 rounded-full px-2 py-2">
-            <ShoppingBag className="w-6 h-6" />
-          </button>
+          <div className="flex items-center gap-3">
+            <Link
+              href="/wishlist"
+              data-favorite-target="product"
+              aria-label={`View favorites, ${favoriteCount} ${favoriteCount === 1 ? "item" : "items"}`}
+              className="relative rounded-full bg-accent px-2 py-2 text-primary-foreground hover:opacity-90"
+            >
+              <Heart className="size-6" />
+              {favoriteCount > 0 && <span aria-hidden="true" className="absolute -right-2 -top-2 flex min-w-5 h-5 items-center justify-center rounded-full bg-primary px-1 text-xs font-bold text-primary-foreground">{favoriteCount}</span>}
+            </Link>
+            <Link
+              href="/bag"
+              data-bag-target="product"
+              aria-label={`View bag, ${itemCount} ${itemCount === 1 ? "item" : "items"}`}
+              className="relative bg-accent text-primary-foreground hover:opacity-90 rounded-full px-2 py-2"
+            >
+              <ShoppingBag className="w-6 h-6" />
+              {itemCount > 0 && <span aria-hidden="true" className="absolute -right-2 -top-2 flex min-w-5 h-5 items-center justify-center rounded-full bg-primary px-1 text-xs font-bold text-primary-foreground">{itemCount}</span>}
+            </Link>
+          </div>
         </div>
       </header>
 
@@ -111,14 +135,14 @@ export default function ProductDetail() {
               ))}
             </div>
             <div className="hidden md:block">
-              <AddToBagSection />
+              <AddToBagSection key={product.id} product={product} />
             </div>
           </div>
           <RelatedProducts key={product.id} productId={product.id} />
         </div>
         {/* Add to Bag Button */}
         <div className="block md:hidden">
-          <AddToBagSection />
+          <AddToBagSection key={product.id} product={product} />
         </div>
       </main>
     </div>

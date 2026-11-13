@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 import type { Product } from "@/types/product";
 
 export type CartItem = {
@@ -13,7 +14,16 @@ type CartStore = {
   removeItem: (productId: number) => void;
 };
 
-export const useCartStore = create<CartStore>((set) => ({
+export const selectCartItemCount = (state: CartStore) =>
+  state.items.reduce((count, item) => count + item.quantity, 0);
+
+export const selectCartSubtotal = (state: CartStore) =>
+  state.items.reduce(
+    (total, item) => total + item.product.price * item.quantity,
+    0,
+  );
+
+export const useCartStore = create<CartStore>()(persist((set) => ({
   items: [],
   addItem: (product) =>
     set((state) => {
@@ -42,4 +52,9 @@ export const useCartStore = create<CartStore>((set) => ({
     set((state) => ({
       items: state.items.filter((item) => item.product.id !== productId),
     })),
+}), {
+  name: "tas-made-bag",
+  version: 1,
+  partialize: (state) => ({ items: state.items }),
+  skipHydration: true,
 }));
