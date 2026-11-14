@@ -1,7 +1,7 @@
 import WelcomeCrew from "@/components/home/welcome-crew";
 import StorefrontHero from "@/components/home/storefront-hero";
 import StorefrontStory from "@/components/home/storefront-story";
-import ReelVideo from "@/components/home/reel-video";
+import ReelStory from "@/components/home/reel-story";
 import ReviewsSection from "@/components/home/reviews-section";
 import NewArrivals from "@/components/home/new-arrivals";
 import styles from "@/components/home/home.module.css";
@@ -16,11 +16,7 @@ export default function Home() {
         <NewArrivals />
       </div>
 
-      <ReelVideo
-        src="/videos/crochet-reel.mp4"
-        poster="/videos/crochet-reel-poster.jpg"
-        title="Make a flower pot with me"
-      />
+      <ReelStory />
       <div id="reviews">
         <ReviewsSection />
       </div>

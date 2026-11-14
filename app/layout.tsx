@@ -35,9 +35,9 @@ const geistMono = Geist_Mono({
 });
 
 const cabinSketch = Cabin_Sketch({
-  subsets: ["latin"], // required
-  variable: "--font-cabin-sketch", // optional css variable
-  weight: ["400", "700"], // optional weights
+  subsets: ["latin"],
+  variable: "--font-cabin-sketch",
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {

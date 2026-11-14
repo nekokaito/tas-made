@@ -64,9 +64,15 @@ export const useCartStore = create<CartStore>()(
     {
       name: "tas-made-bag",
       version: 1,
-      storage: createJSONStorage(() =>
-        typeof window !== "undefined" ? window.localStorage : undefined!,
-      ),
+
+      storage: createJSONStorage(() => {
+        if (typeof window === "undefined") {
+          throw new Error("Browser storage is unavailable");
+        }
+
+        return window.localStorage;
+      }),
+
       partialize: (state) => ({ items: state.items }),
       skipHydration: true,
     },

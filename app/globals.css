@@ -58,7 +58,6 @@
 /* 
    Tailwind theme tokens */
 
-
 @theme inline {
   /* Typography */
   --font-sans: "Geist", "Geist Fallback", system-ui, sans-serif;
@@ -127,9 +126,14 @@
     outline-color: var(--color-ring);
   }
 
+  html {
+    min-height: 100%;
+    background: var(--page-background);
+  }
+
   body {
     min-height: 100vh;
-    background: var(--page-background);
+    background: transparent;
     color: var(--color-foreground);
     font-family: var(--font-sans);
   }

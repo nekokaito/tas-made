@@ -30,10 +30,19 @@ export const useWishlistStore = create<WishlistStore>()(
     {
       name: "tas-made-wishlist",
       version: 1,
-      storage: createJSONStorage(() =>
-        typeof window !== "undefined" ? window.localStorage : undefined!,
-      ),
-      partialize: (state) => ({ favoriteIds: state.favoriteIds }),
+
+      storage: createJSONStorage(() => {
+        if (typeof window === "undefined") {
+          throw new Error("Browser storage is unavailable");
+        }
+
+        return window.localStorage;
+      }),
+
+      partialize: (state) => ({
+        favoriteIds: state.favoriteIds,
+      }),
+
       skipHydration: true,
     },
   ),

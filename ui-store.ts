@@ -6,11 +6,18 @@ type UIState = {
   checkScreen: () => void;
 };
 
+const MOBILE_BREAKPOINT = 768;
+
 export const useUIStore = create<UIState>((set) => ({
   isMobile: false,
+
   setIsMobile: (value) => set({ isMobile: value }),
+
   checkScreen: () => {
-    const isMobile = window.innerWidth < 768;
-    set({ isMobile });
+    if (typeof window === "undefined") return;
+
+    set({
+      isMobile: window.innerWidth < MOBILE_BREAKPOINT,
+    });
   },
 }));

@@ -1,9 +1,6 @@
 .page {
   min-height: 100vh;
   padding: clamp(20px, 4vw, 64px) 16px 120px;
-  background:
-    radial-gradient(circle at 10% 14%, #fff 0, transparent 32%),
-    radial-gradient(circle at 90% 80%, #ead8ed 0, transparent 35%), #f8f1f6;
   color: #392a37;
   font-family: var(--font-loubag), sans-serif;
 }
