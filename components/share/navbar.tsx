@@ -8,6 +8,7 @@ import {
   Heart,
   User,
   PackageSearch,
+  Scissors,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -24,6 +25,7 @@ export default function Header() {
   const navItems = [
     { href: "/", icon: Home },
     { href: "/products", icon: PackageSearch },
+    { href: "/custom-order", icon: Scissors },
   ];
 
   return (
@@ -54,6 +56,7 @@ export default function Header() {
               <Link
                 key={href}
                 href={href}
+                aria-label={href === "/custom-order" ? "Custom orders" : href === "/products" ? "Products" : "Home"}
                 className="relative flex-col items-center gap-1 hidden md:flex"
               >
                 {active && (
@@ -89,7 +92,14 @@ export default function Header() {
             className="relative flex-col items-center gap-1 hidden md:flex"
           >
             <ShoppingBag className="w-6 h-6 text-foreground" />
-            {itemCount > 0 && <span aria-hidden="true" className="absolute -right-3 -top-3 flex min-w-5 h-5 items-center justify-center rounded-full bg-accent px-1 text-xs font-bold text-primary-foreground">{itemCount}</span>}
+            {itemCount > 0 && (
+              <span
+                aria-hidden="true"
+                className="absolute -right-3 -top-3 flex min-w-5 h-5 items-center justify-center rounded-full bg-accent px-1 text-xs font-bold text-primary-foreground"
+              >
+                {itemCount}
+              </span>
+            )}
           </Link>
 
           <Link
@@ -98,7 +108,14 @@ export default function Header() {
             className="relative flex-col items-center gap-1 hidden md:flex"
           >
             <Heart className="w-6 h-6 text-foreground" />
-            {favoriteCount > 0 && <span aria-hidden="true" className="absolute -right-3 -top-3 flex min-w-5 h-5 items-center justify-center rounded-full bg-accent px-1 text-xs font-bold text-primary-foreground">{favoriteCount}</span>}
+            {favoriteCount > 0 && (
+              <span
+                aria-hidden="true"
+                className="absolute -right-3 -top-3 flex min-w-5 h-5 items-center justify-center rounded-full bg-accent px-1 text-xs font-bold text-primary-foreground"
+              >
+                {favoriteCount}
+              </span>
+            )}
           </Link>
           <Link
             href="/profile"

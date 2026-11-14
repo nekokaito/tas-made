@@ -1,6 +1,13 @@
 "use client";
 
-import { Home, ShoppingBag, Heart, User, PackageSearch } from "lucide-react";
+import {
+  Home,
+  ShoppingBag,
+  Heart,
+  User,
+  PackageSearch,
+  Scissors,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
@@ -15,6 +22,7 @@ export default function BottomNav() {
   const navItems = [
     { href: "/", icon: Home },
     { href: "/products", icon: PackageSearch },
+    { href: "/custom-order", icon: Scissors },
     { href: "/bag", icon: ShoppingBag },
     { href: "/wishlist", icon: Heart },
     { href: "/profile", icon: User },
@@ -32,11 +40,15 @@ export default function BottomNav() {
               href={href}
               data-bag-target={href === "/bag" ? "mobile" : undefined}
               data-favorite-target={href === "/wishlist" ? "mobile" : undefined}
-              aria-label={href === "/bag"
-                ? `View bag, ${itemCount} ${itemCount === 1 ? "item" : "items"}`
-                : href === "/wishlist"
-                  ? `View favorites, ${favoriteCount} ${favoriteCount === 1 ? "item" : "items"}`
-                  : undefined}
+              aria-label={
+                href === "/custom-order"
+                  ? "Custom orders"
+                  : href === "/bag"
+                    ? `View bag, ${itemCount} ${itemCount === 1 ? "item" : "items"}`
+                    : href === "/wishlist"
+                      ? `View favorites, ${favoriteCount} ${favoriteCount === 1 ? "item" : "items"}`
+                      : undefined
+              }
               className="relative flex flex-col items-center gap-1"
             >
               {/* animated background circle */}
@@ -56,10 +68,20 @@ export default function BottomNav() {
                   }`}
                 />
                 {href === "/bag" && itemCount > 0 && (
-                  <span aria-hidden="true" className="absolute right-0 top-0 flex min-w-5 h-5 items-center justify-center rounded-full bg-accent px-1 text-xs font-bold text-primary-foreground">{itemCount}</span>
+                  <span
+                    aria-hidden="true"
+                    className="absolute right-0 top-0 flex min-w-5 h-5 items-center justify-center rounded-full bg-accent px-1 text-xs font-bold text-primary-foreground"
+                  >
+                    {itemCount}
+                  </span>
                 )}
                 {href === "/wishlist" && favoriteCount > 0 && (
-                  <span aria-hidden="true" className="absolute right-0 top-0 flex min-w-5 h-5 items-center justify-center rounded-full bg-accent px-1 text-xs font-bold text-primary-foreground">{favoriteCount}</span>
+                  <span
+                    aria-hidden="true"
+                    className="absolute right-0 top-0 flex min-w-5 h-5 items-center justify-center rounded-full bg-accent px-1 text-xs font-bold text-primary-foreground"
+                  >
+                    {favoriteCount}
+                  </span>
                 )}
               </div>
             </Link>

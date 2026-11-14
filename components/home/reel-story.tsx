@@ -8,7 +8,7 @@ export default function ReelStory() {
         <h2 id="reel-story-title" className={`${styles.title} loubag-font`}>
           From a little idea to something you can hold.
         </h2>
-        <p className={styles.description}>
+        <p className={` ${styles.description} `}>
           Every crochet piece starts with a thought. We sketch the idea, work
           out the details, then bring it to life one careful stitch at a time.
           The little finishing touches make each piece feel like its own.

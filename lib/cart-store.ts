@@ -10,6 +10,7 @@ export type CartItem = {
 type CartStore = {
   items: CartItem[];
   addItem: (product: Product) => void;
+  addCustomOrderItem: (product: Product) => void;
   changeQuantity: (productId: number, amount: number) => void;
   removeItem: (productId: number) => void;
 };
@@ -45,11 +46,20 @@ export const useCartStore = create<CartStore>()(
           };
         }),
 
+      addCustomOrderItem: (product) =>
+        set((state) => ({
+          items: state.items.some(
+            (item) => item.product.customOrderId === product.customOrderId,
+          )
+            ? state.items
+            : [...state.items, { product, quantity: 1 }],
+        })),
+
       changeQuantity: (productId, amount) =>
         set((state) => ({
           items: state.items
             .map((item) =>
-              item.product.id === productId
+              item.product.id === productId && !item.product.customOrderId
                 ? { ...item, quantity: item.quantity + amount }
                 : item,
             )
@@ -58,7 +68,10 @@ export const useCartStore = create<CartStore>()(
 
       removeItem: (productId) =>
         set((state) => ({
-          items: state.items.filter((item) => item.product.id !== productId),
+          items: state.items.filter(
+            (item) =>
+              item.product.id !== productId || !!item.product.customOrderId,
+          ),
         })),
     }),
     {

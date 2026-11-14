@@ -7,6 +7,7 @@ export interface Product {
   tags?: string[];
   description?: string;
   isBestSeller?: boolean;
+  customOrderId?: string;
 }
 
 export interface ProductStore {
