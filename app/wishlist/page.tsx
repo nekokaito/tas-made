@@ -14,7 +14,7 @@ export default function WishlistPage() {
   );
 
   return (
-    <main className="min-h-screen bg-background px-4 pb-32 pt-10 text-foreground md:px-8 md:pb-16">
+    <main className="min-h-screen bg-transparent px-4 pb-32 pt-10 text-foreground md:px-8 md:pb-16">
       <div className="mx-auto max-w-6xl">
         <div className="mb-8 flex items-center justify-between gap-4">
           <div>

@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import {
-  Geist,
-  Geist_Mono,
-  Bitcount_Grid_Single,
-  Cabin_Sketch,
-} from "next/font/google";
+import { Geist, Geist_Mono, Cabin_Sketch } from "next/font/google";
 import localFont from "next/font/local";
 import { Providers } from "@/context/providers";
 import BottomNav from "@/components/share/bottom-nav";
@@ -39,11 +34,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const bitcount = Bitcount_Grid_Single({
-  subsets: ["latin"],
-  variable: "--font-bitcount",
-});
-
 const cabinSketch = Cabin_Sketch({
   subsets: ["latin"], // required
   variable: "--font-cabin-sketch", // optional css variable
@@ -63,7 +53,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${loubag.variable} ${geistSans.variable} ${geistMono.variable} ${bitcount.variable} ${cabinSketch.variable} antialiased`}
+        className={`${loubag.variable} ${geistSans.variable} ${geistMono.variable} ${cabinSketch.variable} antialiased`}
       >
         <Providers>{children}</Providers>
         <SiteFooter />

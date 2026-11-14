@@ -1,6 +1,12 @@
 "use client";
 
-import { ArrowLeft, ShoppingBag, Heart, Instagram, Facebook } from "lucide-react";
+import {
+  ArrowLeft,
+  ShoppingBag,
+  Heart,
+  Instagram,
+  Facebook,
+} from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useParams } from "next/navigation";
@@ -13,7 +19,9 @@ import type { Product } from "@/types/product";
 
 export default function ProductDetail() {
   const { id } = useParams<{ id: string }>();
-  const product: Product | undefined = products.find((item) => item.id === Number(id));
+  const product: Product | undefined = products.find(
+    (item) => item.id === Number(id),
+  );
   const itemCount = useCartStore(selectCartItemCount);
   const favoriteCount = useWishlistStore(selectWishlistCount);
 
@@ -25,7 +33,7 @@ export default function ProductDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-secondary">
+    <div className="min-h-screen bg-transparent">
       {/* Header */}
       <header className="sticky bg-secondary top-0 z-40 border-b border-border">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 md:px-8 md:py-6">
@@ -43,7 +51,14 @@ export default function ProductDetail() {
               className="relative rounded-full bg-accent px-2 py-2 text-primary-foreground hover:opacity-90"
             >
               <Heart className="size-6" />
-              {favoriteCount > 0 && <span aria-hidden="true" className="absolute -right-2 -top-2 flex min-w-5 h-5 items-center justify-center rounded-full bg-primary px-1 text-xs font-bold text-primary-foreground">{favoriteCount}</span>}
+              {favoriteCount > 0 && (
+                <span
+                  aria-hidden="true"
+                  className="absolute -right-2 -top-2 flex min-w-5 h-5 items-center justify-center rounded-full bg-primary px-1 text-xs font-bold text-primary-foreground"
+                >
+                  {favoriteCount}
+                </span>
+              )}
             </Link>
             <Link
               href="/bag"
@@ -52,7 +67,14 @@ export default function ProductDetail() {
               className="relative bg-accent text-primary-foreground hover:opacity-90 rounded-full px-2 py-2"
             >
               <ShoppingBag className="w-6 h-6" />
-              {itemCount > 0 && <span aria-hidden="true" className="absolute -right-2 -top-2 flex min-w-5 h-5 items-center justify-center rounded-full bg-primary px-1 text-xs font-bold text-primary-foreground">{itemCount}</span>}
+              {itemCount > 0 && (
+                <span
+                  aria-hidden="true"
+                  className="absolute -right-2 -top-2 flex min-w-5 h-5 items-center justify-center rounded-full bg-primary px-1 text-xs font-bold text-primary-foreground"
+                >
+                  {itemCount}
+                </span>
+              )}
             </Link>
           </div>
         </div>
@@ -60,7 +82,7 @@ export default function ProductDetail() {
 
       <main className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-32 md:gap-8 md:px-8 md:py-12 lg:grid lg:grid-cols-2 lg:items-stretch lg:gap-12">
         {/* Product Image */}
-        <div className="relative w-full min-w-0 max-w-full px-4 py-8 md:p-0 lg:aspect-[3/4] lg:overflow-hidden lg:rounded-4xl">
+        <div className="relative w-full min-w-0 max-w-full px-4 py-8 md:p-0 lg:aspect-3/4 lg:overflow-hidden lg:rounded-4xl">
           <Image
             src={product.image || "/placeholder.svg"}
             alt={product.name}

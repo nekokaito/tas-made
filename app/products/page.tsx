@@ -19,7 +19,7 @@ export default function ProductsPage() {
   );
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-transparent flex flex-col">
       <main className="flex-1 overflow-y-auto pb-24 md:pb-8">
         {/* Search Bar */}
         <div className="px-4 md:px-8 py-4 md:py-6">
